@@ -1,14 +1,13 @@
-import React, {useCallback, useEffect} from 'react';
-import {StatusBar, useColorScheme, Platform} from 'react-native';
-import {SCREEN_NAME} from '../constants/screenName';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
-import HomeContainer from '../screens/home/home.container';
-import {useDispatch, useSelector} from 'react-redux';
-import NavigationServices from '../utils/navigationServices';
-import NotificationModal from '../components/NotificationModal';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, {useEffect} from 'react';
+import {Platform, useColorScheme} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {useDispatch, useSelector} from 'react-redux';
+import NotificationModal from '../components/NotificationModal';
+import {SCREEN_NAME} from '../constants/screenName';
+import NavigationServices from '../utils/navigationServices';
 
 let webClientId =
   Platform.OS == 'android'
@@ -19,33 +18,30 @@ GoogleSignin.configure({
   webClientId: webClientId,
 });
 
-import {LINKING_URL} from '../constants/linkingURL';
-import MainBottomTab from './mainBottomTab';
-import ProductDetailContainer from '../screens/product_detail/productDetail.container';
+import {GuestCustomDrawer} from '../components/CustomDrawer';
 import {COLORS} from '../constants/colors';
-import ProductGalleryContainer from '../screens/productGallery/productGallery.container';
-import FilterContainer from '../screens/filter/filter.container';
+import {LINKING_URL} from '../constants/linkingURL';
+import {getUserSelector} from '../redux/user/user.selectors';
 import AuthContainer from '../screens/auth/auth.container';
+import CartContainer from '../screens/cart/cart.container';
+import CheckoutContainer from '../screens/checkout/checkout.container';
 import confirmOPTContainer from '../screens/confirmOTP/confirmOPT.container';
 import CreatePasswordContainer from '../screens/createPassword/createPassword.container';
-import CartContainer from '../screens/cart/cart.container';
-import MyAddress from '../screens/myAddress/myAddress.container';
 import EditAddAddress from '../screens/customEditAddAddress';
+import MembershipClass from '../screens/MembershipClass/membership.container';
+import MyAddress from '../screens/myAddress/myAddress.container';
+import ThanksContainer from '../screens/thanks/thanks.container';
+import requestPermission from '../utils/permission';
 import {
   notifeeListener,
   NotificationListener,
   requestUserPermission,
 } from '../utils/pushNotification';
-import ThanksContainer from '../screens/thanks/thanks.container';
-import {getUserSelector} from '../redux/user/user.selectors';
-import {GuestCustomDrawer} from '../components/CustomDrawer';
-import requestPermission from '../utils/permission';
-import CheckoutContainer from '../screens/checkout/checkout.container';
-import MembershipClass from '../screens/MembershipClass/membership.container';
+import MainBottomTab from './mainBottomTab';
 
-import PurchasedContainer from '../screens/purchased/purchased.container';
 import ChangePassword from '../screens/account/components/ChangePassword';
 import Profile from '../screens/account/components/Profile';
+import PurchasedContainer from '../screens/purchased/purchased.container';
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {

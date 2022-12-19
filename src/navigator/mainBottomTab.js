@@ -1,33 +1,25 @@
-import React, {useEffect, useRef} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {
-  View,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  Platform,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {SCREEN_NAME} from '../constants/screenName';
 
-import {ICONS} from '../constants/icons';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {scale, scaleHeight} from '../utils/fontConfig';
-import {windowWidth} from '../constants/sizeScreen';
-import {COLORS} from '../constants/colors';
-import {SPACE} from '../constants/space';
-import HomeContainer from '../screens/home/home.container';
-import CategoriesContainer from '../screens/categories/categories.container';
-import AccountContainer from '../screens/account/account.container';
-import ProductDetailContainer from '../screens/product_detail/productDetail.container';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import CheckoutContainer from '../screens/checkout/checkout.container';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import ProductGalleryContainer from '../screens/productGallery/productGallery.container';
+import {COLORS} from '../constants/colors';
+import {ICONS} from '../constants/icons';
+import {windowWidth} from '../constants/sizeScreen';
+import AccountContainer from '../screens/account/account.container';
+import CategoriesContainer from '../screens/categories/categories.container';
 import FilterContainer from '../screens/filter/filter.container';
+import HomeContainer from '../screens/home/home.container';
+import ProductGalleryContainer from '../screens/productGallery/productGallery.container';
+import ProductDetailContainer from '../screens/product_detail/productDetail.container';
+import {scaleHeight} from '../utils/fontConfig';
 
 const TabButton = props => {
   const {icon, onPress, accessibilityState} = props;

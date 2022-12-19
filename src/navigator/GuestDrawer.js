@@ -27,7 +27,7 @@ function GuestDrawer() {
         },
         drawerPosition: 'right',
       }}>
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name={SCREEN_NAME.AUTH_SCREEN}
         component={authContainer}
         options={{
@@ -39,7 +39,7 @@ function GuestDrawer() {
             />
           ),
         }}
-      />
+      /> */}
       {/* <Drawer.Screen
         name={RouteConstant.Signup}
         component={SignUpContainer}
