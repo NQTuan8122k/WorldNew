@@ -19,13 +19,25 @@ const PlaceView = ({name = 'VYN'}) => {
   const [data, setData] = useState({data: listImage});
   let data1 = listImage;
 
-  const UpdateData = () => {
+  const nextPicture = async () => {
     // count = count + 1;
     // setData({data: listImage.slice(0, -1)});
     console.log('=+=======================');
     let tmp = data1.pop();
     data1 = [...[tmp], ...data1];
     setData({data: data1});
+    return;
+  };
+
+  const prevPicture = async () => {
+    // count = count + 1;
+    // setData({data: listImage.slice(0, -1)});
+    console.log('=+=======================');
+    let tmp = data1[0];
+    data1 = data1.slice(1);
+    data1.push(tmp);
+    setData({data: data1});
+    return;
   };
   return (
     <View style={styles.container}>
@@ -35,7 +47,9 @@ const PlaceView = ({name = 'VYN'}) => {
       <CustomCarousel
         listImage={listImage}
         data={data.data}
-        UpdateData={UpdateData}
+        nextPicture={nextPicture}
+        prevPicture={prevPicture}
+
         // getMoreImage={getMoreImage}
       />
     </View>

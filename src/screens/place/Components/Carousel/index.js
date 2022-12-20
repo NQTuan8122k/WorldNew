@@ -11,7 +11,7 @@ import {scale, scaleHeight} from '../../../../utils/fontConfig';
 
 const {width: windowWidth, height: windowHeight} = Dimensions.get('window');
 
-const CustomCarousel = ({listImage, data, UpdateData}) => {
+const CustomCarousel = ({listImage, data, nextPicture, prevPicture}) => {
   useEffect(() => {
     console.log('1249u1rwjiasdamgsodngdoingsdofg', data?.data);
   }, [data]);
@@ -25,8 +25,11 @@ const CustomCarousel = ({listImage, data, UpdateData}) => {
       useNativeDriver: false,
     }).start(() => {
       animatedValue.setValue({x: 0, y: 0});
-      setCurrentCardIndex(prevIndex => prevIndex - 1);
-      listImage?.pop();
+      // setCurrentCardIndex(prevIndex => prevIndex - 1);
+      // listImage?.pop();
+      // let tmp = listImage.pop();
+      // listImage = [...[tmp], ...listImage];
+      nextPicture();
     });
   };
 
@@ -39,8 +42,11 @@ const CustomCarousel = ({listImage, data, UpdateData}) => {
       useNativeDriver: false,
     }).start(() => {
       animatedValue.setValue({x: 0, y: 0});
-      setCurrentCardIndex(prevIndex => prevIndex - 1);
-      listImage?.pop();
+      // setCurrentCardIndex(prevIndex => prevIndex - 1);
+      // listImage?.pop();
+      // let tmp = listImage.pop();
+      // listImage = [...[tmp], ...listImage];
+      prevPicture();
     });
   };
 
@@ -77,14 +83,14 @@ const CustomCarousel = ({listImage, data, UpdateData}) => {
 
   const [currentCardIndex, setCurrentCardIndex] = useState(4);
 
-  let len = listImage.length - 1;
+  let len = data.length - 1;
 
   return (
     <View style={styles.container1} {...panResponder.panHandlers}>
       <Animated.FlatList
         contentContainerStyle={styles.flatListContentStyle}
-        // extraData={data}
-        style={{height: scaleHeight(250 + len * 7)}}
+        extraData={data}
+        style={{height: scaleHeight(250 + 5 * 7)}}
         data={data}
         renderItem={({item, index}) => {
           let cardAnimation = {};
@@ -147,7 +153,7 @@ const CustomCarousel = ({listImage, data, UpdateData}) => {
 
           return (
             <Animated.View
-              key={index}
+              key={item}
               style={[
                 styles.itemContainer,
                 {
@@ -167,8 +173,7 @@ const CustomCarousel = ({listImage, data, UpdateData}) => {
             </Animated.View>
           );
         }}
-        keyExtractor={(item, index) => index + item}
-        // horizontal
+        keyExtractor={(item, index) => item}
         showsHorizontalScrollIndicator={false}
         scrollEnabled
       />
