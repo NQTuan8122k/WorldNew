@@ -7,7 +7,8 @@ import createSagaMiddleware from 'redux-saga';
 
 let middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
-middlewares = [...middlewares, sagaMiddleware, logger];
+// middlewares = [...middlewares, sagaMiddleware, logger];
+middlewares = [...middlewares, sagaMiddleware];
 
 const middleware = applyMiddleware(...middlewares);
 

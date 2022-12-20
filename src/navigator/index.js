@@ -5,7 +5,6 @@ import React, {useEffect} from 'react';
 import {Platform, useColorScheme} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
-import NotificationModal from '../components/NotificationModal';
 import {SCREEN_NAME} from '../constants/screenName';
 import NavigationServices from '../utils/navigationServices';
 
@@ -18,30 +17,19 @@ GoogleSignin.configure({
   webClientId: webClientId,
 });
 
-import {GuestCustomDrawer} from '../components/CustomDrawer';
 import {COLORS} from '../constants/colors';
 import {LINKING_URL} from '../constants/linkingURL';
 import {getUserSelector} from '../redux/user/user.selectors';
-import AuthContainer from '../screens/auth/auth.container';
-import CartContainer from '../screens/cart/cart.container';
-import CheckoutContainer from '../screens/checkout/checkout.container';
-import confirmOPTContainer from '../screens/confirmOTP/confirmOPT.container';
-import CreatePasswordContainer from '../screens/createPassword/createPassword.container';
-import EditAddAddress from '../screens/customEditAddAddress';
-import MembershipClass from '../screens/MembershipClass/membership.container';
-import MyAddress from '../screens/myAddress/myAddress.container';
-import ThanksContainer from '../screens/thanks/thanks.container';
 import requestPermission from '../utils/permission';
 import {
   notifeeListener,
   NotificationListener,
   requestUserPermission,
 } from '../utils/pushNotification';
-import MainBottomTab from './mainBottomTab';
+// import MainBottomTab from './mainBottomTab';
 
-import ChangePassword from '../screens/account/components/ChangePassword';
-import Profile from '../screens/account/components/Profile';
-import PurchasedContainer from '../screens/purchased/purchased.container';
+import PlaceContainer from '../screens/place/place.container';
+import HomeView from '../screens/home/home.view';
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -59,120 +47,23 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false, animationEnabled: false}}>
-      <Stack.Screen
+      {/* <Stack.Screen
         name={SCREEN_NAME.BOTTOM_TAB_MAIN_SCREEN}
         component={MainBottomTab}
         options={{
           headerShown: false,
         }}
-      />
-      {/* <Stack.Screen
-        name={SCREEN_NAME.GALLERY_SCREEN}
-        component={ProductGalleryContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.PRODUCT_DETAIL_SCREEN}
-        component={ProductDetailContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.FILTER_SCREEN}
-        component={FilterContainer}
-        options={{
-          headerShown: false,
-          presentation: 'modal',
-        }}
       /> */}
       <Stack.Screen
-        name={SCREEN_NAME.AUTH_SCREEN}
-        component={AuthContainer}
+        name={SCREEN_NAME.PLACE_SCREEN}
+        component={PlaceContainer}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name={SCREEN_NAME.CONFIRM_OTP_SCREEN}
-        component={confirmOPTContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.CREATE_PASSWORD_SCREEN}
-        component={CreatePasswordContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.CART_SCREEN}
-        component={CartContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.THANKS_SCREEN}
-        component={ThanksContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.GUEST_DRAWER}
-        component={GuestCustomDrawer}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.CHECK_OUT_SCREEN}
-        component={CheckoutContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.PURCHASED_SCREEN}
-        component={PurchasedContainer}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.MY_ADDRESS_SCREEN}
-        component={MyAddress}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.CHANGE_PASSWORD_SCREEN}
-        component={ChangePassword}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.EDIT_ADD_SCREEN}
-        component={EditAddAddress}
-        options={{
-          headerShown: false,
-          presentation: 'modal',
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.MEMBER_CLASS}
-        component={MembershipClass}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name={SCREEN_NAME.PROFILE_SCREEN}
-        component={Profile}
+        name={SCREEN_NAME.HOME_SCREEN}
+        component={HomeView}
         options={{
           headerShown: false,
         }}
@@ -186,10 +77,7 @@ const AppContainer = () => {
 
   const config = {
     screens: {
-      CART_SCREEN: 'CART_SCREEN',
       HOME_SCREEN: 'HOME_SCREEN',
-      PURCHASED_SCREEN: 'PURCHASED_SCREEN',
-      THANKS_SCREEN: 'THANKS_SCREEN',
       // PURCHASED_SCREEN: {
       //   path: 'PURCHASED_SCREEN/:status',
       //   parse: {
@@ -231,7 +119,6 @@ const AppContainer = () => {
           barStyle={'dark-content'}
         /> */}
         <MainStack />
-        <NotificationModal />
       </NavigationContainer>
     </SafeAreaProvider>
   );

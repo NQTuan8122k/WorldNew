@@ -35,7 +35,7 @@ const COLORS = {
   gray_light2: '#e6e6e6',
   red_modal: '#EB4747',
   //app color
-  backgroundColor: '#CDCDCD',
+  backgroundColor: '#fafafa',
   light_bg: '#E9E9E9',
   light_item_bg: '#ffffff80',
   light_border: '#1e1e1e20',

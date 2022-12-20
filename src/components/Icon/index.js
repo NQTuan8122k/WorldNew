@@ -79,7 +79,7 @@ const Icons = ({
       case 'Octicons':
         return <Octicons name={name} size={size} color={color} style={style} />;
       default:
-        return <React.Fragment></React.Fragment>;
+        return <React.Fragment />;
     }
   };
   return getIcon();

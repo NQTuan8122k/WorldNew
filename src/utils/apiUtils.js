@@ -69,11 +69,11 @@ export default class APIUtils {
             responseJson = await response.json();
           } catch (err) {}
           if (__DEV__) {
-            console.log('>>>>>response>>>>>', {
-              url: requestedURL,
-              data: responseJson,
-              status: response.status,
-            });
+            // console.log('>>>>>response>>>>>', {
+            //   url: requestedURL,
+            //   data: responseJson,
+            //   status: response.status,
+            // });
           }
           if (response.status >= 400 && response.status <= 499) {
             throw {data: responseJson, status: response.status};
@@ -141,11 +141,11 @@ export default class APIUtils {
             responseJson = await response.json();
           } catch (err) {}
           if (__DEV__) {
-            console.log('>>>>>response>>>>>', {
-              url,
-              data: responseJson,
-              status: response.status,
-            });
+            // console.log('>>>>>response>>>>>', {
+            //   url,
+            //   data: responseJson,
+            //   status: response.status,
+            // });
           }
           if (response.status >= 400 && response.status <= 499) {
             throw {data: responseJson, status: response.status};
@@ -208,11 +208,11 @@ export default class APIUtils {
             responseJson = await response.json();
           } catch (err) {}
           if (__DEV__) {
-            console.log('>>>>>response>>>>>', {
-              url: requestedURL,
-              data: responseJson,
-              status: response.status,
-            });
+            // console.log('>>>>>response>>>>>', {
+            //   url: requestedURL,
+            //   data: responseJson,
+            //   status: response.status,
+            // });
           }
           if (response.status >= 400 && response.status <= 499) {
             throw {data: responseJson, status: response.status};
@@ -277,11 +277,11 @@ export default class APIUtils {
             responseJson = await response.json();
           } catch (err) {}
           if (__DEV__) {
-            console.log('>>>>>response>>>>>', {
-              url,
-              data: responseJson,
-              status: response.status,
-            });
+            // console.log('>>>>>response>>>>>', {
+            //   url,
+            //   data: responseJson,
+            //   status: response.status,
+            // });
           }
           if (response.status >= 400 && response.status <= 499) {
             throw {data: responseJson, status: response.status};
